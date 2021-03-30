@@ -23,10 +23,10 @@ var userSchema = new Schema({
         required:true,
     },
 
-    userinfo:{ // Description
+    userinfo:{ // User Description
         type:String , 
         trim:true
-    }
+    },
 
 
 
@@ -47,10 +47,10 @@ var userSchema = new Schema({
         type:Array ,
         default:{},
     }
-
-    
-
+});
 
 
-})
+module.exports = mongoose.model("User",userSchema)
+
+
 
