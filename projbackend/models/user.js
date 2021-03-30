@@ -1,4 +1,7 @@
 const mongoose = require("mongoose")
+const crypto   = require('crypto')
+const { v4: uuidv4 } = require('uuid');
+
 
 var Schema = mongoose.Schema;
 
@@ -29,9 +32,6 @@ var userSchema = new Schema({
     },
 
 
-
-    // TODO:
-
     encry_password:{
         type:String,
         required:true,
@@ -49,12 +49,28 @@ var userSchema = new Schema({
     }
 });
 
+userSchema.virtual("password")
+    .set(function(password){
+        this._password = password;
+        this.salt = uuidv4();
+        this.encry_password = this.securePassword(password);
+    })
+    .get(function(){
+        return this._password
+    })
+
+
 
 userSchema.method = {
+
+    authenticate: function(){
+        return this.securePassword(plainpassword) === this.encry_password
+    },
+
     securePassword : function(plainpassword){
         if(!plainpassword)  return "";
         try{
-            return createHmac('sha256', this.salt)
+            return crypto.createHmac('sha256', this.salt)
                .update(plainpassword)
                .digest('hex');
 
