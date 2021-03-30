@@ -12,3 +12,5 @@ const categorySchema = new categorySchema({
 );
 
 module.exports = mongoose.model("Category" , categorySchema)
+
+//Completed User Category Schema
