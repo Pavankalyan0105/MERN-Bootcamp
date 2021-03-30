@@ -1,57 +1,56 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
-var userSchema = new mongoose.Schema({
-    name: {
-            type    :  String,
-            required :  true,
-            maxlength:  32,
-            trim    :   true
-        },
+var Schema = mongoose.Schema;
 
-    lastname:{
-        type : String,
+var userSchema = new Schema({
+    name:{
+        type:String,
+        required:true,
         maxlength:32,
-        trim:true
+        trim:true,
     },
-    email:{
-        type: String,
-        trim:true , 
-        required: true,
-        unique: true   
+ 
+    lastName: {
+        type:String,
+        trim:true,
+        maxlength:32,
     },
-    userinfo:{
-        type:String , 
-        trim: true,
-    },
-    ecnry_password:{
-        type: String,
+
+    email: {
+        type:String,
+        trim:true,
+        unique:true,
         required:true,
     },
-    salt : String ,
+
+    userinfo:{ // Description
+        type:String , 
+        trim:true
+    }
+
+
+
+    // TODO:
+
+    password:{
+        type:String,
+        trim:true,
+    },
+    salt:String,
+
     role:{
-        type : Number , 
+        type: Number , //higher the number higher the role
         default:0,
     },
-    purchases:{
-        type:Array,
-        default:[]
+
+    purchases: {
+        type:Array ,
+        default:{},
     }
+
+    
+
+
 
 })
 
-userSchema.method = {
-   securepassword: function(plainpassword){
-        if(!plainpassword)  return ""
-        try{
-            return createHmac('sha256', this.salt)
-            .update(plainpassword)
-            .digest('hex');
-        }
-        catch(err)  {
-            return "";
-        }
-    }
-}
-
-
-module.exports = mongoose.model("User" , userSchema)
