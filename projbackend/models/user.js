@@ -63,7 +63,7 @@ userSchema.virtual("password")
 
 
 
-userSchema.method = {
+userSchema.methods = {
 
     authenticate: function(){
         return this.securePassword(plainpassword) === this.encry_password
@@ -86,3 +86,4 @@ module.exports = mongoose.model("User",userSchema)
 
 
 
+//check

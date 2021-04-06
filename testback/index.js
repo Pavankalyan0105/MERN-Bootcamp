@@ -20,4 +20,26 @@ app.listen(port , () => {
     console.log("Server is up and running...");
 })
 
-caav
+
+
+
+
+const isloggedIn = (req , res , next)=>{
+    console.log("isLogged in ");
+    next();
+}
+
+const isAdmin = (req,res,next)=>{
+        console.log("isAdmin");
+        next();
+}
+
+const admin = (req ,res)=>{
+        console.log("welcome admin ")
+        return res.send("You are an admin");
+}
+
+
+
+
+app.get('/admin' , isloggedIn , isAdmin , admin);
