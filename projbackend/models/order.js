@@ -13,7 +13,7 @@ const ProductCartSchema = new mongoose.Schema({
 {timestamps:true}
 );
 
-const ProductCart = mongoose.model("ProductCart" ,ProductCartSchema )
+const ProductCart = mongoose.model("ProductCart" ,ProductCartSchema)
 
 
 const OrderSchema = new mongoose.Schema({
