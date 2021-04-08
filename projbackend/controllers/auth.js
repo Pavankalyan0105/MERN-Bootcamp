@@ -12,7 +12,7 @@ exports.signup = (req , res) =>{
 
 exports.signout = (req , res) =>{
     res.json({
-        message: 'user signout'
+        message: 'user signout!!'
     })
 }
 
