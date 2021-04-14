@@ -9,8 +9,6 @@ const {signout , signup} = require("../controllers/auth")
 router.post('/signup'  ,signup)
 
 
-router.get('/signout' , (req , res)=>{
-    res.send("signout")
-})
+router.get('/signout' ,signout)
 
 module.exports = router;
