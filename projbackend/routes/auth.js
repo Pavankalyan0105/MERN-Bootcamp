@@ -1,6 +1,6 @@
-var express = require('express')
+var   express = require('express')
 const { check, validationResult } = require('express-validator');
-var router = express.Router()
+var   router = express.Router()
 
 const {signout , signup } = require("../controllers/auth")
 
