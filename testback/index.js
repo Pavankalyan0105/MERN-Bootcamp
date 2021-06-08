@@ -4,11 +4,14 @@ const app = express()
 
 const authRoutes = require("./routes/auth.js")
 
+const bodyParser = require('body-parser');
+
 const PORT = 9090;
 
 
 
-app.use("/api" , authRoutes)
+app.use(bodyParser.json());
+app.use("/api" , authRoutes);
 
 
 app.listen(PORT , ()=>{
